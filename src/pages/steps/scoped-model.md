@@ -1,13 +1,15 @@
 ---
 setup: |
-  import Layout from '../../layouts/BlogPost.astro'
-  import Cool from '../../components/Author.astro'
+  import StepHeader from '../../components/steps/StepHeader.astro'
+  import Author from '../../components/steps/Author.astro'
 title: scoped_model
 publishDate: 21 May 2021
 name: Nick Manning
 value: 128
 description: scoped_model
 ---
+
+<StepHeader name={frontmatter.name} href="https://twitter.com/n_moore" client:load />
 
 What [`scoped_model`](https://pub.dartlang.org/packages/scoped_model) does is it makes working with state in your app much easier.
 

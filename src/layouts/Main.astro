@@ -1,0 +1,19 @@
+---
+import HeadMeta from './components/HeadMeta.astro';
+import SiteHeader from './components/SiteHeader.astro';
+import SiteFooter from './components/SiteFooter.astro';
+
+const { title, description } = Astro.props;
+---
+<html lang='en'>
+	<head>
+		<HeadMeta {title} {description} />
+	</head>
+	<body>
+		<SiteHeader />	
+		<main>
+			<slot />
+		</main>
+		<SiteFooter />
+	</body>
+</html>

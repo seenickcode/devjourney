@@ -1,0 +1,33 @@
+---
+import Logo from './Logo.astro';
+---
+<header>
+	<div class="flex-item-left"><a href="/"><Logo /></a></div>
+  <div class="flex-item-right"></div>
+</header>
+
+<style>
+	header {
+		padding: 1rem;
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.flex-item-left {
+		flex: 50%;
+		display: flex;
+		flex-direction: row;
+		justify-content: start;
+	}
+	.flex-item-right {
+		flex: 50%;
+		display: flex;
+		flex-direction: row;
+		justify-content: end;
+	}
+	@media (max-width: 480px) {
+		.flex-item-right, .flex-item-left {
+			flex: 100%;
+			justify-content: center;
+		}
+	}
+</style>

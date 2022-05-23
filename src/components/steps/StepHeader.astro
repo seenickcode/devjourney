@@ -11,25 +11,15 @@ export interface Props {
 
 const { title, author, publishDate, heroImage, alt } = Astro.props;
 ---
-
-<div class="layout">
-	<article class="content">
-		<div>
-			<header>
-				{heroImage && <img width="720" height="420" class="hero-image" loading="lazy" src={heroImage} alt={alt} />}
-				<p class="publish-date">{publishDate}</p>
-				<h1 class="title">{title}</h1>
-				<Author name="@FredKSchott" href="https://twitter.com/FredKSchott" />
-			</header>
-			<main>
-				<slot />
-			</main>
-		</div>
-	</article>
+<div class="content">
+	<div class="hero-image">{heroImage && <img width="720" height="420" class="hero-image" loading="lazy" src={heroImage} alt={alt} />}</div>
+	<p class="publish-date">{publishDate}</p>
+	<h1 class="title">{title}</h1>
+	<Author name="@FredKSchott" href="https://twitter.com/FredKSchott" />
 </div>
 
 <style>
-	.hero-image {
+	/* .hero-image {
 		width: 100vw;
 		object-fit: cover;
 		object-position: center;
@@ -84,5 +74,5 @@ const { title, author, publishDate, heroImage, alt } = Astro.props;
 	.title {
 		font-size: 2.25rem;
 		font-weight: 700;
-	}
+	} */
 </style>
