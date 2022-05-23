@@ -10,7 +10,6 @@ value: 128
 description: scoped_model
 ---
 
-<Layout title={frontmatter.title} description={frontmatter.description}>
 <StepHeader name={frontmatter.name} href="https://twitter.com/n_moore" client:load />
 
 What [`scoped_model`](https://pub.dartlang.org/packages/scoped_model) does is it makes working with state in your app much easier.
@@ -228,4 +227,3 @@ class Widget3 extends StatelessWidget {
 That's it. If you want to check out the free 10 minute video for this post, where I go into explaining things a bit more in detail, you can check it out <a href="">here</a>. The code for this post can be found [here](https://github.com/seenickcode/scoped_model_hello_world). If you want to check out a more realistic example of `scoped_model`, sign up for the Pro subscription [here](https://fluttercrashcourse.com/courses/pro-essentials/lessons/pro-scoped-model).
 
 Happy Fluttering, Nick
-</Layout>

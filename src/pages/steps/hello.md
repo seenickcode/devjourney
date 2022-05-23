@@ -10,8 +10,7 @@ value: 128
 description: Just a Hello World Post!
 ---
 
-<Layout title={frontmatter.title} description={frontmatter.description}>
-  <StepHeader name={frontmatter.name} href="https://twitter.com/n_moore" client:load />
+<StepHeader name={frontmatter.name} href="https://twitter.com/n_moore" client:load />
 
 This is so cool!
 
@@ -25,5 +24,3 @@ function returnSeven() {
   return x;
 }
 ```
-
-</Layout>
