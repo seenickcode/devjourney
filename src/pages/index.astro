@@ -2,16 +2,28 @@
 import Layout from '../layouts/Main.astro';
 import StepListItem from '../components/steps/StepListItem.astro';
 
-let title = 'Example Blog';
-let description = 'The perfect starter for your perfect blog.';
+let title = "Home";
+let description = "A series of hand-crafted journeys for aspiring devs.";
+let hero_line1 = 'A series of hand-crafted journeys for aspiring devs.';
 
 let items = await Astro.glob('./steps/*.md');
 items = items.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf());
 ---
 <Layout {title} {description}>
 	<section>
-		<h1>{title}</h1>
-		<p>{description}</p>
+		<div class="hero-line1">{hero_line1}</div>
 		{items.map((p) => <StepListItem post={p} />)}	
 	</section>		
 </Layout>
+
+<style>
+	.hero-line1 {
+		font-family: var(--font-serif);
+		font-size: 1.3rem;
+		width: 100%;
+		text-align: center;
+		margin-top: 2rem;
+		margin-bottom: 2rem;
+		color: var(--theme-text-light);
+	}
+</style>

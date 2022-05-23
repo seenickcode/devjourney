@@ -1,5 +1,7 @@
 ---
 import app from '../../styles/app.css';
+import colors from '../../styles/colors.css';
+import code from '../../styles/code.css';
 
 const { title, description } = Astro.props;
 ---
@@ -11,7 +13,7 @@ const { title, description } = Astro.props;
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
-<meta name="title" content={title} />
+<meta name="title" content="devjourney.io - ${title}" />
 <meta name="description" content={description} />
 
 <!-- Open Graph / Facebook -->
