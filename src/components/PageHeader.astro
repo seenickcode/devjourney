@@ -1,0 +1,22 @@
+---
+const { line1, line2 } = Astro.props;
+---
+<div class="container">
+	<div class="hero-line1">{line1}</div>
+	{line2 && <div class="hero-line2">{line2}</div>}
+</div>
+
+<style>
+	.container {
+		margin-top: 2rem;
+		margin-bottom: 2rem;
+	}
+	.hero-line1,
+	.hero-line2 {
+		/* font-family: var(--font-serif); */
+		font-size: 1.2rem;
+		width: 100%;
+		text-align: center;
+		color: var(--theme-text-light);
+	}
+</style>

@@ -1,29 +1,36 @@
 ---
 import Layout from '../layouts/Main.astro';
+import PageHeader from '../components/PageHeader.astro';
 import StepListItem from '../components/steps/StepListItem.astro';
 
 let title = "Home";
-let description = "A series of hand-crafted journeys for aspiring devs.";
-let hero_line1 = 'A series of hand-crafted journeys for aspiring devs.';
+let line1 = 'A series of learning paths for growing software engineers.';
+let line2 = 'Hand-crafted with love by vetted subject matter experts.';
+let description = [line1, line2].join(' ');
 
 let items = await Astro.glob('./steps/*.md');
 items = items.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf());
 ---
 <Layout {title} {description}>
-	<section>
-		<div class="hero-line1">{hero_line1}</div>
-		{items.map((p) => <StepListItem post={p} />)}	
-	</section>		
+	<div class="centered-container">
+		<section>
+			<PageHeader {line1} {line2} />
+			<div class="list-items">
+				{items.map((p) => <StepListItem post={p} />)}	
+			</div>
+		</section>		
+	</div>
 </Layout>
 
 <style>
-	.hero-line1 {
-		font-family: var(--font-serif);
-		font-size: 1.3rem;
-		width: 100%;
-		text-align: center;
+	.list-items {
 		margin-top: 2rem;
-		margin-bottom: 2rem;
-		color: var(--theme-text-light);
+		max-width: 50%;
+	}
+
+	@media (max-width: 400px) {
+  	.list-items {
+    	max-width: 100%;
+  	}
 	}
 </style>

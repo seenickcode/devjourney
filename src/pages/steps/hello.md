@@ -8,6 +8,7 @@ publishDate: 12 Sep 2021
 name: Nate Moore
 value: 128
 description: Just a Hello World Post!
+duration: quick read
 ---
 
 <StepHeader name={frontmatter.name} href="https://twitter.com/n_moore" client:load />

@@ -25,12 +25,17 @@
   --color-red-rgb: 255, 22, 57;
   --color-yellow: #ffbe2d;
   --color-yellow-rgb: 255, 190, 45;
+
+  --color-brand-light-blue: #51c5f8;
+  --color-brand-light-blue-rgb: 81, 197, 248;
+  --color-brand-purple: #5c4ee5;
+  --color-brand-purple-rgb: 92, 78, 229;
 }
 
 :root {
   color-scheme: light;
-  --theme-accent: var(--color-orange);
-  --theme-accent-rgb: var(--color-orange-rgb);
+  --theme-accent: var(--color-brand-light-blue);
+  --theme-accent-rgb: var(--color-brand-light-blue-rgb);
   --theme-accent-opacity: 0.1;
   --theme-divider: var(--color-gray-100);
   --theme-text: var(--color-gray-800);

@@ -8,6 +8,7 @@ publishDate: 21 May 2021
 name: Nick Manning
 value: 128
 description: scoped_model
+duration: 10 min read
 ---
 
 <StepHeader name={frontmatter.name} href="https://twitter.com/n_moore" client:load />
