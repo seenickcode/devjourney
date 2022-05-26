@@ -1,16 +1,19 @@
 ---
 export interface Props {
-	post: any;
+	url: string;
+	title: string;
+	subtitle: string;
+	footnote: string;
 }
 
-const { post } = Astro.props;
+const { url, title, subtitle, footnote } = Astro.props;
 ---
 
 <article>
 	<!-- <p class="publish-date">{post.frontmatter.publishDate}</p> -->
-	<a href={post.url}><p class="title">{post.frontmatter.title}</p></a>
-	<p class="subtitle">{post.frontmatter.description}</p>
-	<p class="footnote">{post.frontmatter.duration}</p>
+	<a href={url}><p class="title">{title}</p></a>
+	<p class="subtitle">{subtitle}</p>
+	<p class="footnote">{footnote}</p>
 </article>
 
 <style>

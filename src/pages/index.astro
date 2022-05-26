@@ -1,36 +1,28 @@
 ---
 import Layout from '../layouts/Main.astro';
 import PageHeader from '../components/PageHeader.astro';
-import StepListItem from '../components/steps/StepListItem.astro';
+import PathList from '../components/PathList.astro';
 
 let title = "Home";
 let line1 = 'A series of learning paths for growing software engineers.';
 let line2 = 'Hand-crafted with love by vetted subject matter experts.';
 let description = [line1, line2].join(' ');
 
-let items = await Astro.glob('./steps/*.md');
-items = items.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf());
+const listItems = [
+	{ url: '/noskills', title: 'I\'m new to software development', subtitle: 'Tutorials for newcomers.', footnote: '2 tutorials' },
+	{ url: '/webdev', title: 'Web Development', subtitle: 'Get a jumpstart by learning very basic web development skills.', footnote: '1 path, 2 total tutorials' },
+	{ url: '/basicflutter', title: 'Basic Flutter', subtitle: 'For folks wanting to jump into multi-platform mobile dev.', footnote: '2 tutorials' },
+	{ url: '/advancedflutter', title: 'Advanced Flutter', subtitle: 'A course for developers with basic Flutter skills.', footnote: 'advancedflutter.com' },
+];
+const posts = [];
 ---
 <Layout {title} {description}>
 	<div class="centered-container">
 		<section>
 			<PageHeader {line1} {line2} />
-			<div class="list-items">
-				{items.map((p) => <StepListItem post={p} />)}	
-			</div>
+			<PathList {listItems} {posts} />
 		</section>		
 	</div>
 </Layout>
 
-<style>
-	.list-items {
-		margin-top: 2rem;
-		max-width: 50%;
-	}
-
-	@media (max-width: 400px) {
-  	.list-items {
-    	max-width: 100%;
-  	}
-	}
-</style>
+<style></style>
