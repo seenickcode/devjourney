@@ -2,6 +2,8 @@
 import Layout from '../layouts/Main.astro';
 import PageHeader from '../components/PageHeader.astro';
 import PathList from '../components/PathList.astro';
+// import Player from '../components/Player';
+import Player from '../components/Player.astro';
 
 let title = "Home";
 let line1 = 'A series of learning paths for growing software engineers.';
@@ -20,6 +22,8 @@ const posts = [];
 	<div class="centered-container">
 		<section>
 			<PageHeader {line1} {line2} />
+			<!-- <Player client:load /> -->
+			<Player src="https://fluttercrashcourse.global.ssl.fastly.net/videos/285626443/playlist.m3u8" />
 			<PathList {listItems} {posts} />
 		</section>		
 	</div>
