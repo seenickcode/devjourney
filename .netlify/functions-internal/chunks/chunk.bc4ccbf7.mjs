@@ -1,0 +1,17 @@
+// Static
+						const frontmatter = {"setup":"import Layout from '../../layouts/Main.astro';\n","title":"Let's get started!","publishDate":"24 May 2021","name":"Nick Manning","value":128,"description":"Getting started.","duration":"quick read"};
+						const file = "/Users/seenickcode/code/devjourney/src/pages/noskills/02-hello-next.md";
+						const url = "/noskills/02-hello-next";
+						
+						// Deferred
+						async function load() {
+							return (await import('../entry.mjs').then(function (n) { return n.c; }));
+						}						function Content(...args) {
+							return load().then((m) => m.default(...args))
+						}
+						Content.isAstroComponentFactory = true;
+						function getHeaders() {
+							return load().then((m) => m.metadata.headers)
+						}
+
+export { Content, load as default, file, frontmatter, getHeaders, url };
