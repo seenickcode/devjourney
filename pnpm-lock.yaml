@@ -4,7 +4,6 @@ specifiers:
   '@astrojs/netlify': ^0.4.1
   '@supabase/supabase-js': ^1.35.3
   astro: ^1.0.0-beta.31
-  cookiejs: ^2.1.1
   hls.js: ^1.1.5
   plyr: ^3.7.2
   preact: ^10.7.2
@@ -16,7 +15,6 @@ devDependencies:
   '@astrojs/netlify': 0.4.1
   '@supabase/supabase-js': 1.35.3
   astro: 1.0.0-beta.31
-  cookiejs: 2.1.1
   hls.js: 1.1.5
   plyr: 3.7.2
 
@@ -864,10 +862,6 @@ packages:
     resolution: {integrity: sha512-+OQdjP49zViI/6i7nIJpA8rAl4sV/JdPfU9nZs3VqOwGIgizICvuN2ru6fMd+4llL0tar18UYJXfZ/TWtmhUjA==}
     dependencies:
       safe-buffer: 5.1.2
-    dev: true
-
-  /cookiejs/2.1.1:
-    resolution: {integrity: sha512-Y5JFyu5hVYIePojbDgssTZKBapTOlsm/FlJOcroD9yV9gByjZA70U52yZVdlSSy64UEUqvzsEHNnOIVuzxDZsw==}
     dev: true
 
   /core-js/3.22.7:

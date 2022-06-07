@@ -20,10 +20,10 @@ const posts = [];
 <Layout {title} {description}>
 	<div class="centered-container">
 		<section>
-			<a id="login" href="/auth">Login with Github</a>
+			<a id="login" href="#">Login with Github</a>
 			<a id="logout" href="#" hidden>Logout</a>
 			<PageHeader {line1} {line2} />
-			<Player src="https://fluttercrashcourse.global.ssl.fastly.net/videos/285626443/playlist.m3u8" />
+			<!-- <Player src="https://fluttercrashcourse.global.ssl.fastly.net/videos/285626443/playlist.m3u8" /> -->
 			<PathList {listItems} {posts} />
 		</section>		
 	</div>
@@ -33,35 +33,40 @@ const posts = [];
 
 <script>
 	import { createClient } from '@supabase/supabase-js';
-	import cookie from 'cookiejs';
 
-	console.log('loading')
-
-	const loginBtn = document.querySelector('#login');
-	const logoutBtn = document.querySelector('#logout');
+	const loginBtn = document.querySelector('#login')
+	const logoutBtn = document.querySelector('#logout')
 	
-	// Create a single supabase client for interacting with your database
 	const supabase = createClient('https://hxihcvtdyzbbylcjorra.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4aWhjdnRkeXpiYnlsY2pvcnJhIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTM5MjEwNDMsImV4cCI6MTk2OTQ5NzA0M30.XixoEOPUHIwUV8rxA8EPMwINs7lGMWwvK9qCL2o-5iI');
 
-	const user = await supabase.auth.user();
-	updateState(user);
+	const user = await supabase.auth.user()
+	
+	console.log(user)
+	
+	updateState(user)
 
 	function updateState(user) {
-		if (user) {
-			loginBtn.hidden = true;
-			logoutBtn.hidden = false;
-		} else {
-			loginBtn.hidden = false;
-			logoutBtn.hidden = true;
-		}
+		loginBtn.hidden = user;
+		logoutBtn.hidden = !user;
 	}
 
-	logoutBtn.onclick = async () => {
+	loginBtn.onclick = async (event) => {
+		event.preventDefault();
+
+		supabase.auth.signIn({
+			provider: 'github' 
+		}).then((response) => {
+			console.log(JSON.stringify(response.session)); // FIXME not working! response is already null
+		}).catch((err) => {
+			if (err) {
+				console.log('err: ' + err.response.text)
+			}
+		});
+	}
+
+	logoutBtn.onclick = async (event) => {
 		event.preventDefault();
 		await supabase.auth.signOut();
-		cookie.remove('sid');
 		updateState(null);
-		// TODO refresh page to ensure other components that require state are reloaded
-		return false;
 	}
 </script>
