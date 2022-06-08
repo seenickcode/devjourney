@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Main.astro';
+import Player from '../components/Player.astro';
+
+let title = "Home";
+let description = "";
+
+---
+<Layout {title} {description}>
+	<Player src="https://fluttercrashcourse.global.ssl.fastly.net/videos/285626443/playlist.m3u8" />
+</Layout>

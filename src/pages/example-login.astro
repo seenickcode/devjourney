@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Main.astro';
+
+let title = "Home";
+let description = "";
+---
+<Layout {title} {description}>
+	<div>
+		<a id="login" href="#">Login with Github</a>
+		<a id="logout" href="#" hidden>Logout</a>
+	</div>
+</Layout>
+
+<style></style>
+
+<script>
+	import { createClient } from '@supabase/supabase-js';
+
+	const loginBtn = document.querySelector('#login')
+	const logoutBtn = document.querySelector('#logout')
+	
+	const supabase = createClient('https://hxihcvtdyzbbylcjorra.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4aWhjdnRkeXpiYnlsY2pvcnJhIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTM5MjEwNDMsImV4cCI6MTk2OTQ5NzA0M30.XixoEOPUHIwUV8rxA8EPMwINs7lGMWwvK9qCL2o-5iI');
+
+	const user = await supabase.auth.user()
+	
+	console.log(user)
+	
+	updateState(user)
+
+	function updateState(user) {
+		loginBtn.hidden = user != null;
+		logoutBtn.hidden = !user;
+	}
+
+	loginBtn.onclick = async (event) => {
+		event.preventDefault();
+
+		supabase.auth.signIn({
+			provider: 'github' 
+		}).then((response) => {
+			console.log(JSON.stringify(response.session)); // FIXME not working! response is already null
+		}).catch((err) => {
+			if (err) {
+				console.log('err: ' + err.response.text)
+			}
+		});
+	}
+
+	logoutBtn.onclick = async (event) => {
+		event.preventDefault();
+		await supabase.auth.signOut();
+		updateState(null);
+	}
+</script>

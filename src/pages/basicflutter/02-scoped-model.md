@@ -1,6 +1,5 @@
 ---
-setup: |
-  import Layout from '../../layouts/Main.astro';
+layout: ../../layouts/Blog.astro
 title: scoped_model
 publishDate: 21 May 2021
 name: Nick Manning

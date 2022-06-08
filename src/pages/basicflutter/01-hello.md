@@ -1,6 +1,5 @@
 ---
-setup: |
-  import Layout from '../../layouts/Main.astro';
+layout: ../../layouts/Blog.astro
 title: Welcome to basic flutter!
 publishDate: 26 May 2021
 name: Nick Manning

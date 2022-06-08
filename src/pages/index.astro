@@ -2,7 +2,6 @@
 import Layout from '../layouts/Main.astro';
 import PageHeader from '../components/PageHeader.astro';
 import PathList from '../components/PathList.astro';
-import Player from '../components/Player.astro';
 
 let title = "Home";
 let line1 = 'A series of learning paths for growing software engineers.';
@@ -10,63 +9,13 @@ let line2 = 'Hand-crafted with love by vetted subject matter experts.';
 let description = [line1, line2].join(' ');
 
 const listItems = [
-	{ url: '/noskills', title: 'I\'m new to software development', subtitle: 'Tutorials for newcomers.', footnote: '2 tutorials' },
-	{ url: '/webdev', title: 'Web Development', subtitle: 'Get a jumpstart by learning very basic web development skills.', footnote: '1 path, 2 total tutorials' },
+	{ url: '/noskills', title: 'I\'m new to software development', subtitle: 'Tutorials for newcomers.', footnote: '1 tutorial' },
 	{ url: '/basicflutter', title: 'Basic Flutter', subtitle: 'For folks wanting to jump into multi-platform mobile dev.', footnote: '2 tutorials' },
 	{ url: '/advancedflutter', title: 'Advanced Flutter', subtitle: 'A course for developers with basic Flutter skills.', footnote: 'advancedflutter.com' },
 ];
 const posts = [];
 ---
 <Layout {title} {description}>
-	<div class="centered-container">
-		<section>
-			<a id="login" href="#">Login with Github</a>
-			<a id="logout" href="#" hidden>Logout</a>
-			<PageHeader {line1} {line2} />
-			<!-- <Player src="https://fluttercrashcourse.global.ssl.fastly.net/videos/285626443/playlist.m3u8" /> -->
-			<PathList {listItems} {posts} />
-		</section>		
-	</div>
+	<PageHeader {line1} {line2} />
+	<PathList {listItems} />
 </Layout>
-
-<style></style>
-
-<script>
-	import { createClient } from '@supabase/supabase-js';
-
-	const loginBtn = document.querySelector('#login')
-	const logoutBtn = document.querySelector('#logout')
-	
-	const supabase = createClient('https://hxihcvtdyzbbylcjorra.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4aWhjdnRkeXpiYnlsY2pvcnJhIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTM5MjEwNDMsImV4cCI6MTk2OTQ5NzA0M30.XixoEOPUHIwUV8rxA8EPMwINs7lGMWwvK9qCL2o-5iI');
-
-	const user = await supabase.auth.user()
-	
-	console.log(user)
-	
-	updateState(user)
-
-	function updateState(user) {
-		loginBtn.hidden = user;
-		logoutBtn.hidden = !user;
-	}
-
-	loginBtn.onclick = async (event) => {
-		event.preventDefault();
-
-		supabase.auth.signIn({
-			provider: 'github' 
-		}).then((response) => {
-			console.log(JSON.stringify(response.session)); // FIXME not working! response is already null
-		}).catch((err) => {
-			if (err) {
-				console.log('err: ' + err.response.text)
-			}
-		});
-	}
-
-	logoutBtn.onclick = async (event) => {
-		event.preventDefault();
-		await supabase.auth.signOut();
-		updateState(null);
-	}
-</script>

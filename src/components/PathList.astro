@@ -12,7 +12,7 @@ const { listItems, posts } = Astro.props;
 ---
 <div class="container">
 	{listItems.map((r) => <StepListItem url={r.url} title={r.title} subtitle={r.subtitle} footnote={r.footnote} />)}
-	{posts.map((p) => <StepListItem url={p.url} title={p.frontmatter.title} subtitle={p.frontmatter.description} footnote={p.frontmatter.duration} />)}
+	{(posts || []).map((p) => <StepListItem url={p.url} title={p.frontmatter.title} subtitle={p.frontmatter.description} footnote={p.frontmatter.duration} />)}
 </div>
 
 <style>

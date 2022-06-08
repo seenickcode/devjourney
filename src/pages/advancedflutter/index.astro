@@ -6,11 +6,7 @@ const listItems = [];
 const posts = await Astro.glob(`./*.md`);
 ---
 <Layout>
-	<div class="centered-container">
-		<section>
-			<PathList {listItems} {posts} />
-		</section>		
-	</div>
+	<PathList {listItems} {posts} />
 </Layout>
 
 <style></style>
